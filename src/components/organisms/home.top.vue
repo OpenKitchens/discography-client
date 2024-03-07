@@ -4,7 +4,7 @@ import Background from "@molecules/background.vue"
 import Broadform from "@molecules/top.broadform.vue"
 
 const props = defineProps({
-  src: {
+  backgroundimage: {
     type: String
   },
   marquee: {
@@ -22,10 +22,10 @@ const clickedMarquee = () => {
 
 <template>
   <div>
-    <div class="fixed z-10 w-screen">
+    <div class="fixed z-30 w-screen">
       <Header :marquee="marquee" @clickedMarquee="clickedMarquee" />
     </div>
-    <Background :src="src"></Background>
+    <Background :src="backgroundimage"></Background>
     <Broadform text="ディープダイブで見つけよう。" placeholder="アクセスコード" label="追加" @clicked="" />
   </div>
 </template>

@@ -1,43 +1,44 @@
 <script setup lang="ts">
-import Top from "@organisms/top.vue"
+import Top from "@organisms/home.top.vue"
 import Moment from "@organisms/moment.vue"
 import Threads from "@organisms/threads.vue"
 import About from "@organisms/about.vue"
 
-const props = defineProps({
-  src: {
-    type: String
-  },
-  usericon: {
-    type: String
-  },
-  username: {
-    type: String
-  },
-  emoji: {
-    type: String
-  },
-  title: {
-    type: String
-  },
-  server: {
-    type: String
-  },
-  marquee: {
-    type: String
-  }
-})
-
-const clickedMarquee = () => {
-  
+//  インターフェースの定義
+interface data {
+  me: { username: string, usericon: string };
+  marquee: string;
+  backgroundimage: string;
+  Moment: {
+    usericon: string;
+    username: string;
+    message: string;
+    uuid: string;
+    ip: string;
+    port: string;
+    replys: [];
+  }[];
+  Threads: {
+    emoji: string;
+    username: string;
+    title: string;
+    server: string;
+  }[];
 }
+
+const props = defineProps<{
+  data: data;
+}>()
+
+const clickedMarquee = () => { }
+
 </script>
 
 <template>
   <div>
-    <Top :src="src" :marquee="marquee" @clickedMarquee="clickedMarquee" />
-    <Moment :usericon="usericon" :username="username" />
-    <Threads :username="username" :emoji="emoji" :title="title" :server="server" />
+    <Top :backgroundimage="data.backgroundimage" :marquee="data.marquee" @clickedMarquee="clickedMarquee" />
+    <Moment :momentData="data.Moment" :usericon="data.me.usericon" :InputView="true" />
+    <Threads :threadData="data.Threads" />
     <About />
   </div>
 </template>

@@ -3,25 +3,21 @@ import Title from "@atoms/title.vue"
 import Post from "@molecules/threads.post.vue"
 import ImageButton from "@atoms/imageButton.vue"
 
-const props = defineProps({
-  emoji: {
-    type: String
-  },
-  username: {
-    type: String
-  },
-  title: {
-    type: String
-  },
-  server: {
-    type: String
-  },
-})
+interface Threads {
+  emoji: string;
+  username: string;
+  title: string;
+  server: string;
+};
+
+const props = defineProps<{
+  threadData: Threads[];
+}>()
 </script>
 
 <template>
   <div class="w-screen text-center flex justify-center mt-12">
-    <div class="w-3/5">
+    <div class="w-1/2">
       <div class="flex">
         <Title text="Threads" class="text-left" />
         <div class="ml-10">
@@ -30,10 +26,9 @@ const props = defineProps({
       </div>
       <div class="mt-3">
         <div class="border-t-2 border-zinc-800">
-          <Post :username="username" :emoji="emoji" :title="title" :server="server" />
-          <Post :username="username" :emoji="emoji" :title="title" :server="server" />
-          <Post :username="username" :emoji="emoji" :title="title" :server="server" />
-          <Post :username="username" :emoji="emoji" :title="title" :server="server" />
+          <div v-for="data in threadData">
+            <Post :username="data.username" :emoji="data.emoji" :title="data.title" :server="data.server" />
+          </div>
         </div>
       </div>
     </div>

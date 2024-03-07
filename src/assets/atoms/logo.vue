@@ -2,5 +2,5 @@
 </script>
 
 <template>
-  <img src="/icons/discography.svg">
+  <img src="/icons/discography.svg" class="py-4">
 </template>

@@ -8,6 +8,25 @@ body {
 
 *:focus {
   outline: none;
-  box-shadow:  0  0  0  0.2rem rgba(0,  123,  255,  0.25); /* Bootstrapのデフォルトフォーカスアウトラインを再現 */
-  transition: box-shadow  0.15s ease-in-out; /*  アニメーション効果を追加 */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  /* Bootstrapのデフォルトフォーカスアウトラインを再現 */
+  transition: box-shadow 0.15s ease-in-out;
+  /*  アニメーション効果を追加 */
+}
+
+* {
+  animation-name: fadeInAnime;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInAnime {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
