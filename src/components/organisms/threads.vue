@@ -8,6 +8,9 @@ interface Threads {
   username: string;
   title: string;
   server: string;
+  uuid: string;
+  ip: string;
+  port: string;
 };
 
 const props = defineProps<{
@@ -27,7 +30,8 @@ const props = defineProps<{
       <div class="mt-3">
         <div class="border-t-2 border-zinc-800">
           <div v-for="data in threadData">
-            <Post :username="data.username" :emoji="data.emoji" :title="data.title" :server="data.server" />
+            <Post :username="data.username" :emoji="data.emoji" :title="data.title" :server="data.server" :uuid="data.uuid" :ip="data.ip"
+            :port="data.port" />
           </div>
         </div>
       </div>

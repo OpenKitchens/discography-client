@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import Button from '@atoms/button.vue';
 import ImageButton from '@atoms/imageButton.vue';
+import { useRouter } from "vue-router"
+
+const router = useRouter()
 
 const props = defineProps({
   username: {
@@ -14,14 +17,36 @@ const props = defineProps({
   },
   server: {
     type: String
+  },
+  ip: {
+    type: String
+  },
+  port: {
+    type: String
+  },
+  uuid: {
+    type: String
   }
 })
+
+const postClick = () => {
+  console.log("postClick")
+  console.log(props.uuid)
+  console.log(props.ip)
+
+  router.push({
+    name: 'thread',
+    query: { ip: props.ip, port: props.port, uuid: props.uuid }
+  })
+}
+
 </script>
 
 <template>
-  <div class="w-full bg-zinc-900 px-5 py-3 border-zinc-800 border-x-2 border-b-2">
+  <div class="w-full bg-zinc-900 px-5 py-3 border-zinc-800 border-x-2 border-b-2" @click="postClick">
     <div class="flex">
-      <div class="rounded-full h-20 w-20 flex-none mx-2 py-3 text-5xl bg-zinc-800 p-1 border border-zinc-700">{{ emoji }}</div>
+      <div class="rounded-full h-20 w-20 flex-none mx-2 py-3 text-5xl bg-zinc-800 p-1 border border-zinc-700">{{ emoji
+        }}</div>
       <div class="flex flex-col text-left mt-7 mx-5">
         <p class="text-white font-bold text-xl opacity-80"># {{ title }}</p>
         <div class="text-zinc-400 text-base">
@@ -37,6 +62,7 @@ const props = defineProps({
         </div>
       </div>
     </div>
-    <p class="flex"><p class="text-zinc-400 mx-2 my-3">d/ {{ server }}</p><Button variant="emoji" label="Add emoji" @clicked="" /></p>
+    <p class="flex">
+    <p class="text-zinc-400 mx-2 my-3">d/ {{ server }}</p><Button variant="emoji" label="Add emoji" @clicked="" /></p>
   </div>
 </template>

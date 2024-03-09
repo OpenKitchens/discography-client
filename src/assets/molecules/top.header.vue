@@ -20,7 +20,8 @@ const props = defineProps({
 
 <template>
   <!--<Marquee :label="marquee" @clickedMarquee="clickedMarquee" />-->
-  <div class="px-20 flex justify-between px-10" style="-webkit-backdrop-filter: blur(12px);backdrop-filter: blur(12px);">
+  <!--<div class="px-20 flex justify-between px-10" style="-webkit-backdrop-filter: blur(12px);backdrop-filter: blur(12px);">-->
+  <div class="px-20 flex justify-between px-10">
     <RouterLink to="/"><Logo /></RouterLink>
 
     <div class="flex">

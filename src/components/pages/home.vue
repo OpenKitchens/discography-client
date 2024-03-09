@@ -37,7 +37,7 @@ const clickedMarquee = () => { }
 <template>
   <div>
     <Top :backgroundimage="data.backgroundimage" :marquee="data.marquee" @clickedMarquee="clickedMarquee" />
-    <Moment :momentData="data.Moment" :usericon="data.me.usericon" :InputView="true" />
+    <Moment :momentData="data.Moment" :usericon="data.me.usericon" :InputView="true" :MomentView="true" />
     <Threads :threadData="data.Threads" />
     <About />
   </div>

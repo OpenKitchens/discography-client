@@ -13,7 +13,12 @@ const router = createRouter({
       path: '/profile',
       name: 'profile',
       component: () => import('@views/profile.vue')
-    }
+    },
+    {
+      path: '/thread',
+      name: 'thread',
+      component: () => import('@views/thread.vue')
+    },
   ]
 })
 
