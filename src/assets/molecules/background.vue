@@ -6,7 +6,8 @@ const props = defineProps({
   },
 })
 
-const background = ref(`background-image: url('${props.src}')`)
+const background = ref()
+background.value = `background-image: url('${props.src}')`
 </script>
 
 <template>

@@ -4,48 +4,68 @@ import Top from "@organisms/thread.top.vue"
 import Moment from "@organisms/moment.vue"
 import About from "@organisms/about.vue"
 import Profile from "@molecules/moment.profile.vue"
+import { useRouter } from "vue-router"
 
-//  インターフェースの定義
-interface Thread {
+const router = useRouter()
 
+interface Server {
+  uuid: string;
+  ip: string;
+  port: string;
+  cuuid: string;
+}
+
+interface serverView {
   title: string;
-  server: {
-    uuid: string;
-    ip: string;
-    port: string;
-  },
-  replys: []
+  about: string;
+}
 
+interface Reply {
+  usericon: string;
+  username: string;
+  message: string;
+  uuid: string;
+  ip: string;
+  port: string;
 }
-interface data {
-  me: { username: string, usericon: string };
-  thread: Thread;
+
+interface Me {
+  usericon: string;
+  username: string;
   backgroundimage: string;
-  Moment: {
-    usericon: string;
-    username: string;
-    message: string;
-    uuid: string;
-    ip: string;
-    port: string;
-    replys: [];
-  }[];
 }
+
+interface ThreadData {
+  me: Me;
+  title: string;
+  server: Server;
+  serverView: serverView;
+  replys: Reply[];
+}
+
 
 const props = defineProps<{
-  data: data;
+  data: ThreadData;
 }>()
 
-console.log(props.data.me)
+console.log(props.data)
+
+const click = () => {
+  console.log(props.data.server)
+  router.push({
+    name: 'server',
+    query: { ip: props.data.server.ip, port: props.data.server.port, uuid: props.data.server.uuid, cuuid: props.data.server.cuuid, index: 0 }
+  })
+}
 </script>
 
 <template>
   <div>
-    <Top :backgroundimage="data.me.data.backgroundimage" />
+    <Top :backgroundimage="data.me.backgroundimage" />
     <div class="flex">
-      <Moment :momentData="data.thread.replys" :usericon="data.me.data.usericon" :MomentView="false" :InputView="true"
-        :threadTitle="data.thread.title">
-        <Profile src="" :username="data.server.data.title" :message="data.server.data.about" label="サーバーを追加" />
+      <Moment :momentData="data.replys" :usericon="data.me.usericon" :MomentView="false" :InputView="true"
+        :threadTitle="'# ' + data.title">
+        <Profile src="" :username="data.serverView.title" :message="data.serverView.about" label="サーバービュー" @clicked="click" />
       </Moment>
     </div>
     <About />

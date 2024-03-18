@@ -5,40 +5,45 @@ import Threads from "@organisms/threads.vue"
 import About from "@organisms/about.vue"
 
 //  インターフェースの定義
-interface data {
-  me: { username: string, usericon: string };
-  marquee: string;
+interface Moment {
+  usericon: string;
+  username: string;
+  message: string;
+  uuid: string;
+  ip: string;
+  port: string;
+}
+
+interface Thread {
+  emoji: string;
+  username: string;
+  title: string;
+  server: string;
+  uuid: string;
+  ip: string;
+  port: string;
+}
+
+interface Data {
+  username: string;
+  usericon: string;
   backgroundimage: string;
-  Moment: {
-    usericon: string;
-    username: string;
-    message: string;
-    uuid: string;
-    ip: string;
-    port: string;
-    replys: [];
-  }[];
-  Threads: {
-    emoji: string;
-    username: string;
-    title: string;
-    server: string;
-  }[];
+  Moment: Moment[];
+  Threads: Thread[];
 }
 
 const props = defineProps<{
-  data: data;
+  data: Data;
 }>()
 
-const clickedMarquee = () => { }
 
 </script>
 
 <template>
   <div>
-    <Top :backgroundimage="data.backgroundimage" :marquee="data.marquee" @clickedMarquee="clickedMarquee" />
-    <Moment :momentData="data.Moment" :usericon="data.me.usericon" :InputView="true" :MomentView="true" />
-    <Threads :threadData="data.Threads" />
+    <Top :backgroundimage="data.backgroundimage" />
+    <Moment :momentData="data.Moment" :usericon="data.usericon" :InputView="true" :MomentView="true" threadTitle="" />
+    <Threads :threadData="data.Threads" width="width: 50vw" />
     <About />
   </div>
 </template>

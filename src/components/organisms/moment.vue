@@ -16,15 +16,14 @@ interface Moment {
   uuid: string;
   ip: string;
   port: string;
-  replys: [];
-};
+}
 
 const props = defineProps<{
   usericon: string;
   momentData: Moment[];
+  threadTitle: string;
   InputView: boolean;
   MomentView: boolean;
-  threadTitle: string;
 }>()
 
 const profileView = ref(false)
@@ -64,11 +63,11 @@ const click = () => {
         </div>
       </div>
       <div class="mt-3">
-        <Form placeholder="テキストを入力" :src="usericon" v-if="InputView" />
+        <Form placeholder="テキストを入力" :src="usericon" v-if="InputView" class="rounded-t-xl" />
       </div>
       <div v-for="(data, index) in momentData">
         <div>
-          <Post :src="data.usericon" :username="data.username" :message="data.message" :uuid="data.uuid" :ip="data.ip"
+          <Post :usericon="data.usericon" :username="data.username" :message="data.message" :uuid="data.uuid" :ip="data.ip"
             :port="data.port" @profileOpen="profileOpen" />
         </div>
       </div>

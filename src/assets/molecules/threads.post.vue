@@ -43,7 +43,7 @@ const postClick = () => {
 </script>
 
 <template>
-  <div class="w-full bg-zinc-900 px-5 py-3 border-zinc-800 border-x-2 border-b-2" @click="postClick">
+  <div class="w-full bg-zinc-900 px-5 py-3 border-zinc-800 border-b-2" @click="postClick">
     <div class="flex">
       <div class="rounded-full h-20 w-20 flex-none mx-2 py-3 text-5xl bg-zinc-800 p-1 border border-zinc-700">{{ emoji
         }}</div>
@@ -63,6 +63,6 @@ const postClick = () => {
       </div>
     </div>
     <p class="flex">
-    <p class="text-zinc-400 mx-2 my-3">d/ {{ server }}</p><Button variant="emoji" label="Add emoji" @clicked="" /></p>
+    <p class="text-zinc-400 mx-2 my-3">d/ {{ server }}</p><Button variant="emoji" label="Add emoji" /></p>
   </div>
 </template>

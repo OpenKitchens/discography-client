@@ -15,23 +15,25 @@ interface Threads {
 
 const props = defineProps<{
   threadData: Threads[];
+  width: string;
 }>()
 </script>
 
 <template>
   <div class="w-screen text-center flex justify-center mt-12">
-    <div class="w-1/2">
+    <div :style="props.width">
       <div class="flex">
         <Title text="Threads" class="text-left" />
         <div class="ml-10">
           <ImageButton src="/icons/ellipsis.circle.fill.svg" size="35" />
         </div>
       </div>
-      <div class="mt-3">
-        <div class="border-t-2 border-zinc-800">
+      <div class="mt-3 flex">
+        <slot />
+        <div class="border-2 border-zinc-800 py-2 bg-zinc-900" :style="props.width">
           <div v-for="data in threadData">
-            <Post :username="data.username" :emoji="data.emoji" :title="data.title" :server="data.server" :uuid="data.uuid" :ip="data.ip"
-            :port="data.port" />
+            <Post :username="data.username" :emoji="data.emoji" :title="data.title" :server="data.server"
+              :uuid="data.uuid" :ip="data.ip" :port="data.port" />
           </div>
         </div>
       </div>

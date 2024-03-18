@@ -19,6 +19,11 @@ const router = createRouter({
       name: 'thread',
       component: () => import('@views/thread.vue')
     },
+    {
+      path: '/server',
+      name: 'server',
+      component: () => import('@views/server.vue'),
+    }
   ]
 })
 

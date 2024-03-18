@@ -5,17 +5,6 @@ import Logo from "@atoms/logo.vue"
 import ImageButton from "@atoms/imageButton.vue"
 import { RouterLink } from "vue-router"
 
-const emits = defineEmits(["clickedMarquee"]);
-
-const clickedMarquee = () => {
-  emits("clickedMarquee");
-};
-
-const props = defineProps({
-  marquee: {
-    type: String
-  }
-})
 </script>
 
 <template>
